@@ -1,0 +1,27 @@
+library(shiny)
+source("camera-control.R")
+
+shinyServer(function(input, output,session) {
+    rValues = reactiveValues(img = NULL)
+    observeEvent(input$shutter,
+    {
+        
+        output$image <- renderPlot({
+            isolate({
+                print(input$shutterspeed)
+                if (input$preview)
+                {
+                    print("preview")
+                    change.resolution(7)
+                } else {change.resolution(3)}
+                rValues$img <- timed.exposure(input$shutterspeed) #assign image to global variable
+                plot(rValues$img,asp=1)
+            })
+        })
+    })
+
+    output$annoteimage <- renderPlot({
+        plot(rValues$img)
+    })
+    
+})
