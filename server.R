@@ -13,7 +13,7 @@ shinyServer(function(input, output,session) {
                 {
                     print("preview")
                     change.resolution(7)
-                } else {change.resolution(3)}
+                } else {change.resolution(5)}
                 rValues$img <- timed.exposure(input$shutterspeed) #assign image to global variable
                 plot(rValues$img,asp=1)
             })
