@@ -17,11 +17,11 @@ shinyServer(function(input, output,session) {
                 rValues$img <- timed.exposure(input$shutterspeed) #assign image to global variable
                 plot(rValues$img,asp=1)
             })
-        })
+        },height=600,width=800)
     })
 
     output$annoteimage <- renderPlot({
         plot(rValues$img)
-    })
+    },height=600,width=800)
     
 })
