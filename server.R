@@ -17,11 +17,22 @@ shinyServer(function(input, output,session) {
                 rValues$img <- timed.exposure(sec=input$shutterspeed,aperture=input$aperture) #assign image to global variable
                 plot(rValues$img,asp=1)
             })
-        })
+        },height=600,width=800)
     })
 
     output$annoteimage <- renderPlot({
         plot(rValues$img)
-    })
-    
+    },height=600,width=800)
+
+    observeEvent(input$exitbtn,
+                 {
+                     stopApp()
+                 })
+
+    observeEvent(input$savebtn,
+                 {
+                     filename <- paste0("/home/pi/GoogleDrive/images/",input$expt,".jpg")
+                     print(filename)
+                     save.image(im=rValues$img,file=filename)
+                 })
 })

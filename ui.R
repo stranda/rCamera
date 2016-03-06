@@ -23,9 +23,13 @@ shinyUI(
                        numericInput("nlanes","Number of lanes per row",value=13),
 #                       numericInput("nsamp","Number of samples on gel",value=12),
 #                       numericInput("nladder","Number of ladders on gel",value=1),
-                       radioButtons("testradio","Numeric Choices",choices=1:10,inline=T),
-                       radioButtons("firstsamp","Which position is lane 1?",choices=c("upper left","lower left","upper right","lower right"))
+#                       radioButtons("testradio","Numeric Choices",choices=1:10,inline=T),
+                       radioButtons("firstsamp","Which position is lane 1?",
+                                    choices=c("upper left","lower left","upper right","lower right")),
+                       actionButton("savebtn","Save image (uses experiment name above as name)"),
+                       actionButton("exitbtn","Push to stop app")
                    ),
+
                    mainPanel(
                        plotOutput("annoteimage")
                        ))
