@@ -17,9 +17,9 @@ set.shutter <- function(sec=1)
     test <- system(paste0("gphoto2 --set-config shutterspeed=",sec),intern=T)
 }
 
-set.aperture <- function(sec=1)
+set.aperture <- function(a=1)
 {
-    test <- system(paste0("gphoto2 --set-config shutterspeed=",sec),intern=T)
+    test <- system(paste0("gphoto2 --set-config-value aperture=",a),intern=T)
 }
 
 change.resolution <- function(res=7)
@@ -27,10 +27,11 @@ change.resolution <- function(res=7)
     test <- system(paste0("gphoto2 --set-config imageformat=",res),intern=T)
 }
 
-timed.exposure <- function(sec=1)
+timed.exposure <- function(sec=1,aperture=18)
 {
     if (file.exists("capt0000.jpg")) unlink("capt0000.jpg")
     set.shutter("bulb")
+    set.aperture(aperture)
     ret <- system(paste0("gphoto2 --set-config eosremoterelease=2 --wait-event=",sec,"s --set-config eosremoterelease=4 --wait-event-and-download=2s"),intern=T)
      retfn <- gsub("Saving file as ","",ret[grep("Saving file as",ret)])
     img <- load.image(retfn)

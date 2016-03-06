@@ -5,7 +5,8 @@ shinyUI(
       tabPanel("Take the Picture",
                sidebarLayout(
                    sidebarPanel(
-                       sliderInput("shutterspeed","Exposure time in sec",min=1,max=90,value=1),
+                       selectInput("aperture","Camera aperture",choices=c(16,18,20,22,25,29)),
+                       sliderInput("shutterspeed","Exposure time in sec",min=1,max=90,value=3),
                        checkboxInput("preview","Preview?",value=FALSE),
                        actionButton("shutter","Take Picture")
                    ),
