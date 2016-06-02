@@ -31,8 +31,9 @@ shinyServer(function(input, output,session) {
 
     observeEvent(input$savebtn,
                  {
-                     filename <- paste0("/home/pi/GoogleDrive/images/",gsub("/","",input$expt),".jpg")
+                     filename <- paste0("/home/strandlab/GoogleDrive/images/",gsub("/","",input$expt),".jpg")
                      print(filename)
                      save.image(im=rValues$img,file=filename)
+                     print("file saved")
                  })
 })
