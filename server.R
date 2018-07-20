@@ -31,7 +31,7 @@ shinyServer(function(input, output,session) {
 
     observeEvent(input$savebtn,
     {
-        dir=ifelse(who=="unPAK",
+        dir=ifelse(input$who=="unPAK",
                    "/home/strandlab/GoogleDrive/images/",
                    "/home/strandlab/GoogleDrive/moleCore/")
         filename <- paste0(dir,gsub("/","_",input$expt),".jpg")
