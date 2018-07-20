@@ -30,10 +30,13 @@ shinyServer(function(input, output,session) {
                  })
 
     observeEvent(input$savebtn,
-                 {
-                     filename <- paste0("/home/strandlab/GoogleDrive/images/",gsub("/","",input$expt),".jpg")
-                     print(filename)
-                     save.image(im=rValues$img,file=filename)
-                     print("file saved")
-                 })
+    {
+        dir=ifelse(who=="unPAK",
+                   "/home/strandlab/GoogleDrive/images/",
+                   "/home/strandlab/GoogleDrive/moleCore/")
+        filename <- paste0(dir,gsub("/","_",input$expt),".jpg")
+        print(filename)
+        save.image(im=rValues$img,file=filename)
+        print("file saved")
+    })
 })
