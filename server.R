@@ -34,6 +34,13 @@ shinyServer(function(input, output,session) {
         dir=ifelse(input$who=="unPAK",
                    "/home/strandlab/GoogleDrive/images/",
                    "/home/strandlab/GoogleDrive/moleCore/")
+        dir=NULL
+        if (input$who=="unPAK")
+            dir= "/home/strandlab/GoogleDrive/images/"
+        if (input$who=="MolecCore")
+            dir= "/home/strandlab/GoogleDrive/moleCore/"
+        if (input$who=="JamDNA")
+            dir= "/home/strandlab/GoogleDrive/moleCore/The_Jam_DNA/"
         filename <- paste0(dir,gsub("/","_",input$expt),".jpg")
         print(filename)
         save.image(im=rValues$img,file=filename)

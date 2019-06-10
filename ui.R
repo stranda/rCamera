@@ -17,7 +17,8 @@ shinyUI(
       tabPanel("Keep records",
                sidebarLayout(
                    sidebarPanel(
-                       radioButtons("who","Where is this image housed?",choices=c("unPAK","Molec. Core")),
+#                       radioButtons("who","Where is this image housed?",choices=c("unPAK","Molec. Core")),
+                       selectInput("who","Where is this image housed?",choices=c("unPAK","MolecCore","JamDNA")),
                        textInput("expt","Experiment",value=""),
                        selectInput("ladder","Type of ladder",choices=c("Bullseye 100bp","Mass ladder")),
                        numericInput("nrows","Number of rows on gel",value=1),
